@@ -1,8 +1,13 @@
 import React from 'react';
+import './App.css'
+import OrderForm from './OrderForm';
+import Orders from './Orders';
 
 function App() {
   return (
-    <div >
+    <div className="wrapper">
+      <OrderForm />
+      <Orders/>
     </div>
   );
 }
