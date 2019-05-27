@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Button, CustomInput, FormGroup, Label, Input, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
+import { Form, Button, CustomInput, FormGroup, Label, Input, Col} from 'reactstrap';
+import PairSelect from './PairSelect';
 class OrderForm extends Component {
     render() {
         return (
@@ -8,18 +8,7 @@ class OrderForm extends Component {
                 <FormGroup row>
                     <Label sm={2} for="exampleEmail">Pair</Label>
                     <Col sm={5}>
-                        <Dropdown isOpen={false}>
-                            <DropdownToggle caret>
-                                Select
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem header>Pairs</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>Tabaluga</DropdownItem>
-                                <DropdownItem>Lucky Luke</DropdownItem>
-                                <DropdownItem>Doge</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
+                     <PairSelect/>
                     </Col>
                 </FormGroup>
 
