@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Input, FormFeedback, Spinner } from 'reactstrap';
 import { connect } from 'react-redux'
 import { selectPair } from './store/actionCretors';
+import withFormGroup from './hoc/withFormGroup';
+
 class PairSelect extends Component {
     constructor(props) {
         super(props);
@@ -56,12 +58,12 @@ const mapStateToProps = (state) => {
     return {
         pair: state.pair
     };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         selectPair: (pair) => dispatch(selectPair(pair))
     }
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(PairSelect);
+export default connect(mapStateToProps, mapDispatchToProps)(withFormGroup(PairSelect, "Pair"));

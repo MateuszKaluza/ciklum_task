@@ -1,7 +1,8 @@
 import React from 'react';
 import { CustomInput } from 'reactstrap';
 import { connect } from 'react-redux'
-import { changeOrderType } from './store/actionCretors';
+import { changeOrderType } from '../store/actionCretors';
+import withFormGroup from '../hoc/withFormGroup';
 
 const OrderTypeSelect = (props) => {
     return (
@@ -22,5 +23,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeOrderType: (orderType) => dispatch(changeOrderType(orderType))
     };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(OrderTypeSelect);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withFormGroup(OrderTypeSelect, "Order type"));

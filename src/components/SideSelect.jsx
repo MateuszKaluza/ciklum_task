@@ -1,7 +1,8 @@
 import React from 'react';
 import { CustomInput } from 'reactstrap';
 import { connect } from 'react-redux'
-import { changeSide } from './store/actionCretors';
+import { changeSide } from '../store/actionCretors';
+import withFormGroup from '../hoc/withFormGroup';
 
 const SideSelect = (props) => {
     return (
@@ -26,5 +27,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changeSide: (side) => dispatch(changeSide(side))
     };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(SideSelect);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withFormGroup(SideSelect, "Side"));
