@@ -1,0 +1,3 @@
+export const SELECT_PAIR = 'SELECT_PAIR';
+export const CHANGE_SIDE = 'CHANGE_SIDE';
+export const CHANGE_ORDER_TYPE = 'CHANGE_ORDER_TYPE';
