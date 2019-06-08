@@ -1,19 +1,31 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import {
-    Card, CardHeader,  CardBody, CardText
+    Card, CardHeader, CardBody, CardText
 } from 'reactstrap';
 
 
 const Orders = (props) => {
+    const {orders} = props;
     return (
         <Card>
             <CardHeader>Orders</CardHeader>
             <CardBody>
-                <CardText>Dziwki</CardText>
-                <CardText>Koks</CardText>
+                {orders.map((order, index) => {
+                    return <CardText key={index}>
+                        <code>{JSON.stringify(order)}</code>
+                    </CardText>
+                })}
             </CardBody>
         </Card>
     );
 };
 
-export default Orders;
+const mapStateToProps = (state) => {
+    return {
+        orders: state.orders
+    }
+};
+
+export default connect(mapStateToProps)(Orders);

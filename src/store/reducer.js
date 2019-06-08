@@ -5,7 +5,8 @@ const initialState = {
     side: 'BUY',
     orderType: 'MARKET',
     limit: 0,
-    quantity: 0
+    quantity: 0,
+    orders: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,9 @@ const reducer = (state = initialState, action) => {
             return {...state, limit: action.limit};
         case actionTypes.CHANGE_QUANTITY:
             return {...state, quantity: action.quantity};
+        case actionTypes.ADD_ORDER:
+            const orders = [...state.orders, action.order];
+            return {...state, orders};
         default:
             return state;
     }
