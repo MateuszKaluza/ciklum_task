@@ -35,14 +35,13 @@ export class PairSelect extends Component {
     }
 
     componentDidMount() {
-        axios.get(URLS.SYMBOL_DETAILS)
+       return axios.get(URLS.SYMBOL_DETAILS)
             .then(({ data }) => {
-                console.log('---------------->DUPA')
                 const pairs = data.map(element => element.pair);
                 this.props.selectPair(pairs[0]);
                 this.setState({ pairs, isLoading: false });
             })
-            .catch(() => {
+            .catch((err) => {
                 this.setState({ isValid: false, isLoading: false })
             });
     }

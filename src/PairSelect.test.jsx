@@ -11,7 +11,8 @@ describe('PairSelect', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<PairSelect />);
+        wrapper = shallow(<PairSelect selectPair={() => {
+        }} />);
     });
 
     afterEach(() => {
@@ -61,21 +62,15 @@ describe('PairSelect', () => {
         expect(onChangeSpy.calledOnceWith(fakeEvent)).toEqual(false);
     });
 
-    xit('should fetch data', () => {
+    it('should fetch data', async (done) => {
         const mockPairs = [{ pair: 'abc' }, { pair: 'xyz' }];
         const mock = new MockAdapter(axios);
         mock.onGet(URLS.SYMBOL_DETAILS)
             .reply(200, mockPairs);
 
-        wrapper.instance()
+        await wrapper.instance()
             .componentDidMount();
-       
-                expect(wrapper.state('pairs')).toEqual(mockPairs)
-    
-        
-
+        expect(wrapper.state('pairs')).toEqual(['abc', 'xyz']);
+        done();
     });
-    // expect(selectPairSpy.called).toEqual(true);
-    // // expect(wrapper.state('isLoading')).toEqual(false);
-    // // expect(wrapper.state('pairs')).toEqual([result]);
 });

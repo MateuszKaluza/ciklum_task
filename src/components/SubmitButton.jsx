@@ -6,11 +6,11 @@ import {addOrder} from "../store/actionCretors";
 
 const LOCAL_STORAGE_KEY = 'orders';
 
-const SubmitButton = (props) => {
+export const SubmitButton = (props) => {
     return (
         <FormGroup row>
             <Col sm={7}>
-                <Button onClick={handleClick}>Submit</Button>
+                <Button onClick={handleClick} disabled={isDisabled()}>Submit</Button>
             </Col>
         </FormGroup>
     );
@@ -30,7 +30,10 @@ const SubmitButton = (props) => {
             orders.push(props.order);
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(orders));
         }
+    }
 
+    function isDisabled() {
+        return props.order.orderType === 'LIMIT' && props.order.limit === 0;
     }
 };
 
