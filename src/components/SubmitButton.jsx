@@ -1,24 +1,55 @@
 import React from 'react';
-import { Button, Col, FormGroup } from "reactstrap";
-import { connect } from 'react-redux';
+import {connect} from "react-redux";
+import {Button, Col, FormGroup} from "reactstrap";
+import localStorage from 'localStorage';
+import {addOrder} from "../store/actionCretors";
+
+const LOCAL_STORAGE_KEY = 'orders';
 
 const SubmitButton = (props) => {
     return (
         <FormGroup row>
             <Col sm={7}>
-                <Button onClick={(e) => e.preventDefault()} disabled={props.isEnabled()}>Submit</Button>
+                <Button onClick={handleClick}>Submit</Button>
             </Col>
         </FormGroup>
     );
+
+    function handleClick(event) {
+        event.preventDefault();
+        saveInLocalStorage();
+        props.addOrder(props.order);
+
+        function saveInLocalStorage() {
+            const items = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+            let orders = items || [];
+            if (items)
+                orders = JSON.parse(orders);
+
+            orders.push(props.order);
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(orders));
+        }
+
+    }
 };
 
 const mapStateToProps = (state) => {
     return {
-        isEnabled: () => {
-            const buttonState = !!state.limit && !!state.side && !!state.orderType && !!state.quantity;
-            return state.orderType === 'LIMIT' ? buttonState && !!state.limit : buttonState;
+        order: {
+            pair: state.pair,
+            side: state.side,
+            orderType: state.orderType,
+            limit: state.limit,
+            quantity: state.quantity
         }
-    };
-}
+    }
+};
 
-export default connect(mapStateToProps)(SubmitButton);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addOrder: (order) => dispatch(addOrder(order))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitButton);

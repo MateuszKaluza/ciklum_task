@@ -35,3 +35,10 @@ export const changeQuantity = (quantity) => {
         quantity
     };
 };
+
+export const addOrder = (order) => {
+    return  {
+        type: actionTypes.ADD_ORDER,
+        order
+    };
+};
