@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Form} from 'reactstrap';
 import PairSelect from './PairSelect';
 import SideSelect from './components/SideSelect';
-import OrderTypeSelect from './components/OrderTypeSelect.';
+import OrderTypeSelect from './components/OrderTypeSelect';
 import LimitInput from './components/LimitInput';
 import QuantityInput from "./components/QuantityInput";
 import SubmitButton from "./components/SubmitButton";

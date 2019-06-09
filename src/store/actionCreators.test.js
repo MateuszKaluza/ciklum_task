@@ -53,4 +53,14 @@ describe('actionCreators', () => {
 
         expect(actions.changeQuantity(quantity)).toEqual(expectedAction)
     });
+
+    it('should create an action for add order', () => {
+        const order = {};
+        const expectedAction = {
+            type: types.ADD_ORDER,
+            order
+        };
+
+        expect(actions.addOrder(order)).toEqual(expectedAction)
+    });
 });

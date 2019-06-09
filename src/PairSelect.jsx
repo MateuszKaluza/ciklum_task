@@ -42,7 +42,7 @@ export class PairSelect extends Component {
                 this.props.selectPair(pairs[0]);
                 this.setState({ pairs, isLoading: false });
             })
-            .catch(() => {
+            .catch((err) => {
                 this.setState({ isValid: false, isLoading: false })
             });
     }

@@ -7,7 +7,7 @@ import withFormGroup from '../hoc/withFormGroup';
 const MARKET = 'MARKET';
 const LIMIT = 'LIMIT';
 
-const OrderTypeSelect = (props) => {
+export const OrderTypeSelect = (props) => {
     return (
         <>
             <CustomInput type="radio" id="market" name="orderType" label={MARKET} checked={isChecked(MARKET)} onChange={() => props.changeOrderType(MARKET)} />

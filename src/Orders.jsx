@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 
 
-const Orders = (props) => {
+export const Orders = (props) => {
     const {orders} = props;
     return (
         <Card>

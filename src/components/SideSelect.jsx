@@ -7,7 +7,7 @@ import withFormGroup from '../hoc/withFormGroup';
 const BUY = 'BUY';
 const SELL = 'SELL';
 
-const SideSelect = (props) => {
+export const SideSelect = (props) => {
     return (
         <>
             <CustomInput type="radio" id="buy" name="side" label={BUY} checked={isChecked(BUY)} onChange={() => props.changeSide(BUY)} />
