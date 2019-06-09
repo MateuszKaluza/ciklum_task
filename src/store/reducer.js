@@ -5,7 +5,7 @@ const initialState = {
     side: 'BUY',
     orderType: 'MARKET',
     limit: 0,
-    quantity: 0
+    quantity: 1
 };
 
 const reducer = (state = initialState, action) => {

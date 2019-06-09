@@ -4,16 +4,19 @@ import { connect } from 'react-redux'
 import { changeSide } from '../store/actionCretors';
 import withFormGroup from '../hoc/withFormGroup';
 
+const BUY = 'BUY';
+const SELL = 'SELL';
+
 const SideSelect = (props) => {
     return (
         <>
-            <CustomInput type="radio" id="buy" name="side" label="BUY" onChange={() => props.changeSide('BUY')} />
-            <CustomInput type="radio" id="sell" name="side" label="SELL" onChange={() => props.changeSide('SELL')} />
+            <CustomInput type="radio" id="buy" name="side" label={BUY} checked={isChecked(BUY)} onChange={() => props.changeSide(BUY)} />
+            <CustomInput type="radio" id="sell" name="side" label={SELL} checked={isChecked(SELL)} onChange={() => props.changeSide(SELL)} />
         </>
     );
 
-    function isChecked(e) {
-        return props.side === e
+    function isChecked(label) {
+        return props.side === label
     }
 };
 

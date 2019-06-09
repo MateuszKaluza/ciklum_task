@@ -6,7 +6,7 @@ import withFormGroup from '../hoc/withFormGroup';
 
 const QuantityInput = (props) => {
     return (
-        <Input type="number" min="0" value={props.quantity} onChange={(e) => props.changeQuantity(+e.target.value)}/>
+        <Input type="number" min="1" value={props.quantity} onChange={(e) => props.changeQuantity(+e.target.value)}/>
     );
 };
 

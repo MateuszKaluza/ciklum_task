@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Input, FormFeedback, Spinner } from 'reactstrap';
 import { connect } from 'react-redux'
 import { selectPair } from './store/actionCretors';
+import * as URLS from './url';
 import withFormGroup from './hoc/withFormGroup';
+import axios from 'axios';
 
-class PairSelect extends Component {
+export class PairSelect extends Component {
     constructor(props) {
         super(props);
         this.state = { value: '', pairs: [], isValid: true, isLoading: true };
-        this.toggle = this.toggle.bind(this);
     }
 
     render() {
@@ -17,7 +18,6 @@ class PairSelect extends Component {
                 <Input invalid={!this.state.isValid}
                     disabled={!this.state.isValid}
                     type="select"
-                    name="pair"
                     value={this.props.pair}
                     onChange={(e) => this.props.selectPair(e.target.value)}>
                     {
@@ -34,16 +34,10 @@ class PairSelect extends Component {
         );
     }
 
-    toggle() {
-        this.setState(prevState => ({
-            isOpen: !prevState.isOpen
-        }));
-    }
-
     componentDidMount() {
-        fetch('https://api.bitfinex.com/v1/symbols_details')
-            .then(response => response.json())
-            .then((data) => {
+        axios.get(URLS.SYMBOL_DETAILS)
+            .then(({ data }) => {
+                console.log('---------------->DUPA')
                 const pairs = data.map(element => element.pair);
                 this.props.selectPair(pairs[0]);
                 this.setState({ pairs, isLoading: false });

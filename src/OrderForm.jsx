@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Form, Button, FormGroup, Col} from 'reactstrap';
+import {Form} from 'reactstrap';
 import PairSelect from './PairSelect';
 import SideSelect from './components/SideSelect';
 import OrderTypeSelect from './components/OrderTypeSelect.';
